@@ -44,6 +44,7 @@ TEST_GROUP(sprintf)
 };
 //END: testGroup
 
+#if 1
 TEST(sprintf, NoformatOperations)
 {
 	expect("hey");
@@ -56,3 +57,11 @@ TEST(sprintf, InsertString)
 	expect("Hello World\n");
 	given(sprintf(output, "Hello %s\n", "World"));
 }
+#else
+TEST(sprintf, NoFomatOperations)	// chapter 2.2.3
+{
+	char output[5];
+	LONGS_EQUAL(4, sprintf(output, "hey"));
+	STRCMP_EQUAL("hey", output);
+}
+#endif
